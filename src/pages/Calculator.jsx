@@ -78,7 +78,10 @@ function Calculator() {
           data-aos="fade-up"
           data-aos-duration="1000"
           className="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
-          <h1 className="text-2xl font-bold text-center mb-4">Biodata User</h1>
+          <h1 className="text-2xl font-bold text-center mb-4 inline-flex flex-col justfy-center items-center w-full">
+            SRAS (Self Rating Anxiety Scale)
+            <span>Biodata Peserta</span>
+          </h1>
           <form>
             <div className="mb-4">
               <label className="block text-gray-700">Nama Lengkap</label>
@@ -139,6 +142,23 @@ function Calculator() {
             className="text-2xl font-bold text-center mb-6">
             Self Rating Anxiety Scale (SRAS)
           </h1>
+          <p className="text-gray-700 text-start mb-3">
+            SRAS (Self Rating Anxiety Scale) adalah penilaian kecemasan pada
+            pasien dewasa yang dikembangkan berdasar gejala kecemasan. Terdapat
+            20 pertanyaan dimana setiap pertanyaan dinilai 1-4 (1: tidak pernah,
+            2: kadang kadang, 3: sebagian waktu, 4: hampir setiap waktu).
+            <br />
+            <br />
+            Rentang penilaian 20-80:
+            <br />
+            Skor 20-44 = normal/tidak cemas
+            <br />
+            Skor 45-59 = kecemasan ringan
+            <br />
+            Skor 60-74 = kecemasan sedang
+            <br />
+            Skor 75-80 = kecemasan berat.
+          </p>
           <p
             data-aos="fade-up"
             data-aos-duration="1200"

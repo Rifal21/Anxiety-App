@@ -28,7 +28,7 @@ function Navbar() {
           <Link
             to="/calculator"
             className=" md:hover:text-gray-500 hover:bg-primary md:hover:bg-transparent hover:text-white px-2 py-2 rounded-lg transition duration-200">
-            Kalkulator
+            SRAS
           </Link>
           <Link
             to="/result"
@@ -74,7 +74,7 @@ function Navbar() {
         <Link
           to="/calculator"
           className="block  md:hover:text-gray-500 hover:bg-primary md:hover:bg-transparent text-primary hover:text-white px-2 py-2 rounded-lg transition duration-200">
-          Kalkulator
+          SRAS
         </Link>
         <Link
           to="/result"
