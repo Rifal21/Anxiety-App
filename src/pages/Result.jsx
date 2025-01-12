@@ -33,39 +33,62 @@ function Result() {
         level: "Normal/Tidak Cemas",
         message:
           "Anda dalam kondisi baik dan tidak menunjukkan tanda-tanda kecemasan. Pertahankan gaya hidup sehat Anda!",
-        color: "bg-green-500", // Warna untuk normal
-        pdfColor: [0, 255, 0], // RGB untuk hijau (untuk PDF)
+        color: "bg-green-500",
+        pdfColor: [0, 255, 0],
+        solution: [
+          "Lakukan aktivitas fisik seperti olahraga ringan secara rutin.",
+          "Tidur yang cukup dan makan makanan yang bergizi.",
+          "Gunakan teknik relaksasi sederhana, seperti pernapasan dalam atau meditasi.",
+          "Hindari stres dengan mengatur waktu dan prioritas.",
+        ],
       };
     } else if (score >= 45 && score <= 59) {
       return {
         level: "Kecemasan Ringan",
         message:
           "Anda mengalami kecemasan ringan. Ini mungkin terkait dengan stres sehari-hari. Tenangkan diri dan coba kendalikan pemicunya.",
-        color: "bg-yellow-500", // Warna untuk kecemasan ringan
-        pdfColor: [255, 255, 0], // RGB untuk kuning (untuk PDF)
+        color: "bg-yellow-500",
+        pdfColor: [255, 255, 0],
+        solution: [
+          "Lakukan teknik relaksasi seperti mindfulness atau yoga untuk menenangkan diri.",
+          "Luangkan waktu untuk melakukan aktivitas menyenangkan atau hobi favorit Anda.",
+          "Bicarakan perasaan Anda dengan orang yang dipercaya, seperti teman atau keluarga.",
+        ],
       };
     } else if (score >= 60 && score <= 74) {
       return {
         level: "Kecemasan Sedang",
         message:
           "Anda mengalami kecemasan sedang. Kondisi ini dapat memengaruhi keseharian Anda. Ada baiknya untuk mulai mencari bantuan profesional.",
-        color: "bg-orange-500", // Warna untuk kecemasan sedang
-        pdfColor: [255, 165, 0], // RGB untuk oranye (untuk PDF)
+        color: "bg-orange-500",
+        pdfColor: [255, 165, 0],
+        solution: [
+          "Konsultasi dengan psikolog untuk mendapatkan dukungan dan strategi penanganan.",
+          "Batasi konsumsi kafein, alkohol, atau zat yang dapat meningkatkan kecemasan.",
+          "Cobalah membuat rutinitas yang teratur untuk mengurangi perasaan tidak terkendali.",
+        ],
       };
     } else if (score >= 75 && score <= 80) {
       return {
         level: "Kecemasan Berat",
         message:
           "Anda mengalami kecemasan berat. Kondisi ini dapat mengganggu kehidupan sehari-hari. Segera dapatkan bantuan profesional.",
-        color: "bg-red-500", // Warna untuk kecemasan berat
-        pdfColor: [255, 0, 0], // RGB untuk merah (untuk PDF)
+        color: "bg-red-500",
+        pdfColor: [255, 0, 0],
+        solution: [
+          "Segera konsultasi dengan tenaga profesional seperti psikolog atau psikiater.",
+          "Pertimbangkan terapi seperti terapi kognitif-perilaku (CBT) untuk mengubah pola pikir negatif.",
+          "Jika diperlukan, psikiater dapat merekomendasikan pengobatan untuk membantu mengurangi gejala.",
+          "Libatkan diri dalam terapi kelompok atau komunitas untuk memperkuat dukungan sosial.",
+        ],
       };
     } else {
       return {
         level: "Tidak Valid",
         message: "Skor tidak valid. Pastikan Anda menjawab semua pertanyaan.",
-        color: "bg-gray-500", // Warna untuk tidak valid
-        pdfColor: [169, 169, 169], // RGB untuk abu-abu (untuk PDF)
+        color: "bg-gray-500",
+        pdfColor: [169, 169, 169],
+        solution: [],
       };
     }
   };
@@ -77,57 +100,69 @@ function Result() {
   const downloadPDF = () => {
     const doc = new jsPDF();
 
-    // Menambahkan logo
-    doc.addImage(logo, "PNG", 10, 10, 50, 50); // Posisi X, Y dan ukuran (lebar, tinggi)
-
-    // Menambahkan nama institusi
-    doc.setFontSize(20);
+    // Header
+    doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text("Sekolah Tinggi Ilmu Kesehatan (STIKES)", 70, 30); // Nama institusi
-    doc.text("Payung Negeri PEKANBARU", 70, 40); // Nama institusi
+    doc.text(
+      "Hasil Penilaian Tingkat Kecemasan",
+      105,
+      20,
+      null,
+      null,
+      "center"
+    );
+    doc.setFontSize(14);
+    doc.text(
+      "Sekolah Tinggi Ilmu Kesehatan (STIKES) Payung Negeri",
+      105,
+      30,
+      null,
+      null,
+      "center"
+    );
 
-    // Menambahkan biodata
+    // Logo
+    doc.addImage(logo, "PNG", 10, 10, 30, 30);
+
+    // Biodata
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.text(`Nama: ${biodata.name}`, 10, 70);
-    doc.text(`Usia: ${biodata.age}`, 10, 80);
-    doc.text(`Jenis Kelamin: ${biodata.gender}`, 10, 90);
-    doc.text(`Skor Total: ${score}`, 10, 100);
+    doc.text(`Nama: ${biodata.name}`, 20, 50);
+    doc.text(`Usia: ${biodata.age}`, 20, 60);
+    doc.text(`Jenis Kelamin: ${biodata.gender}`, 20, 70);
+    doc.text(`Skor Total: ${score}`, 20, 80);
 
-    // Menambahkan grafik hasil kecemasan (grafik batang sederhana)
-    const barHeight = 10;
-    const barWidth = 180;
-    const x = 10;
-    const y = 110;
-    const scorePercentage = (score / 80) * 100; // Persentase berdasarkan skor
-
-    // Menambahkan bar dengan warna sesuai hasil
-    doc.setFillColor(...result.pdfColor); // Menggunakan warna dari result untuk PDF
-    doc.rect(x, y, (scorePercentage / 100) * barWidth, barHeight, "FD");
-
-    // Menambahkan keterangan grafik
+    // Hasil
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Hasil Penilaian", 20, 100);
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.text("Tingkat Kecemasan", 10, y + 20); // Keterangan tentang grafik
-    doc.text(`${scorePercentage.toFixed(2)}%`, x + barWidth + 5, y + 5); // Persentase skor pengguna
+    doc.text(`Tingkat Kecemasan: ${result.level}`, 20, 110);
+    doc.text(result.message, 20, 120, { maxWidth: 170 });
+    doc.setFont("helvetica", "bold");
+    doc.text("Solusi", 20, 135);
+    // Solusi dengan gambar
+    result.solution.forEach((solution, index) => {
+      const yPosition = 140 + index * 40; // Adjust spacing between solutions
+      doc.addImage(
+        `/image/Solusi/hasil-${index + 1}/solution-${index + 1}.jpg`,
+        "JPEG",
+        20,
+        yPosition,
+        40,
+        25 // Slightly smaller image size
+      );
+      doc.setFont("helvetica", "normal");
+      doc.text(solution, 20, yPosition + 35, { maxWidth: 170 }); // Text below the image
+    });
 
-    // Menambahkan hasil kecemasan
-    doc.text(`Tingkat Kecemasan: ${result.level}`, 10, 130);
-
-    // Membagi pesan ke dalam dua baris jika panjang pesan lebih dari batas
-    const messageLines = doc.splitTextToSize(result.message, 180); // Membatasi lebar teks ke 180
-    doc.text(messageLines, 10, 140);
-
-    // Menyimpan PDF
+    // Unduh file PDF
     doc.save("hasil_kecemasan.pdf");
   };
 
   return score && biodata ? (
-    <div
-      className="container mx-auto p-6"
-      data-aos="fade-up"
-      data-aos-anchor-placement="center-center"
-      data-aos-duration="1000">
+    <div className="container mx-auto p-6">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold text-center mb-6">Hasil Penilaian</h1>
         <div className="mb-6">
@@ -151,7 +186,29 @@ function Result() {
           <p className="text-gray-700">
             Tingkat Kecemasan: <span className="font-bold">{result.level}</span>
           </p>
-          <p className="text-gray-700 mt-2">{result.message}</p>
+          <p className="text-gray-700 mt-2 mb-5">{result.message}</p>
+          <h2 className="text-lg font-semibold mb-2">Solusi</h2>
+          <ul className="text-gray-700 list-decimal pl-5">
+            {result.solution.map((solution, index) => (
+              <li
+                className="mb-4 flex flex-wrap items-center justify-center"
+                key={index}>
+                <div className="w-full h-full bg-gray-100 rounded flex-shrink-0 mr-4">
+                  <img
+                    src={`/image/Solusi/hasil-${index + 1}/solution-${
+                      index + 1
+                    }.jpg`}
+                    alt={`Gambar solusi ${index + 1}`}
+                    className="w-full h-full object-cover rounded"
+                    data-aos="zoom-in"
+                  />
+                </div>
+                <p className="text-gray-700 text-start mt-3">
+                  {index + 1}. {solution}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
         <button
           onClick={() => navigate("/")}
