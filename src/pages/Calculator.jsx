@@ -47,6 +47,85 @@ function Calculator() {
       return;
     }
 
+    // Fungsi untuk mendapatkan hasil dan solusi
+    const getResultMessage = (score) => {
+      if (score >= 20 && score <= 44) {
+        return {
+          level: "Normal/Tidak Cemas",
+          message:
+            "Anda dalam kondisi baik dan tidak menunjukkan tanda-tanda kecemasan. Pertahankan gaya hidup sehat Anda!",
+          solution: [
+            "Lakukan aktivitas fisik seperti olahraga ringan secara rutin.",
+            "Tidur yang cukup dan makan makanan yang bergizi.",
+            "Gunakan teknik relaksasi sederhana, seperti pernapasan dalam atau meditasi.",
+            "Hindari stres dengan mengatur waktu dan prioritas.",
+          ],
+        };
+      } else if (score >= 45 && score <= 59) {
+        return {
+          level: "Kecemasan Ringan",
+          message:
+            "Anda mengalami kecemasan ringan. Ini mungkin terkait dengan stres sehari-hari. Tenangkan diri dan coba kendalikan pemicunya.",
+          solution: [
+            "Lakukan teknik relaksasi seperti mindfulness atau yoga untuk menenangkan diri.",
+            "Luangkan waktu untuk melakukan aktivitas menyenangkan atau hobi favorit Anda.",
+            "Bicarakan perasaan Anda dengan orang yang dipercaya, seperti teman atau keluarga.",
+          ],
+        };
+      } else if (score >= 60 && score <= 74) {
+        return {
+          level: "Kecemasan Sedang",
+          message:
+            "Anda mengalami kecemasan sedang. Kondisi ini dapat memengaruhi keseharian Anda. Ada baiknya untuk mulai mencari bantuan profesional.",
+          solution: [
+            "Konsultasi dengan psikolog untuk mendapatkan dukungan dan strategi penanganan.",
+            "Batasi konsumsi kafein, alkohol, atau zat yang dapat meningkatkan kecemasan.",
+            "Cobalah membuat rutinitas yang teratur untuk mengurangi perasaan tidak terkendali.",
+          ],
+        };
+      } else if (score >= 75 && score <= 80) {
+        return {
+          level: "Kecemasan Berat",
+          message:
+            "Anda mengalami kecemasan berat. Kondisi ini dapat mengganggu kehidupan sehari-hari. Segera dapatkan bantuan profesional.",
+          solution: [
+            "Segera konsultasi dengan tenaga profesional seperti psikolog atau psikiater.",
+            "Pertimbangkan terapi seperti terapi kognitif-perilaku (CBT) untuk mengubah pola pikir negatif.",
+            "Jika diperlukan, psikiater dapat merekomendasikan pengobatan untuk membantu mengurangi gejala.",
+            "Libatkan diri dalam terapi kelompok atau komunitas untuk memperkuat dukungan sosial.",
+          ],
+        };
+      } else {
+        return {
+          level: "Tidak Valid",
+          message: "Skor tidak valid. Pastikan Anda menjawab semua pertanyaan.",
+          solution: [],
+        };
+      }
+    };
+
+    const result = getResultMessage(totalScore);
+
+    // Ambil data yang sudah ada di localStorage, jika ada
+    const savedData = JSON.parse(localStorage.getItem("srasData")) || [];
+
+    // Menambahkan data pengguna baru ke dalam array data yang sudah ada
+    const newData = {
+      biodata,
+      totalScore,
+      resultLevel: result.level,
+      resultMessage: result.message,
+      solutions: result.solution,
+      responses,
+    };
+
+    // Tambahkan data baru ke dalam array data yang ada
+    savedData.push(newData);
+
+    // Simpan data gabungan ke localStorage
+    localStorage.setItem("srasData", JSON.stringify(savedData));
+
+    // Navigasi ke halaman hasil
     navigate("/result", { state: { score: totalScore, biodata } });
   };
 

@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 // Import AOS
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Autoplay } from "swiper/modules";
 
 function Home() {
   const navigate = useNavigate();
@@ -43,10 +44,29 @@ function Home() {
         <p className="text-base mt-4 text-gray-700">
           Gangguan kecemasan atau anxiety disorder adalah salah satu gangguan
           mental yang paling umum dan memengaruhi banyak orang di seluruh dunia.
+          Kondisi ini ditandai dengan perasaan cemas, khawatir, dan ketakutan
+          yang berlebihan terhadap berbagai hal dalam kehidupan sehari-hari.
+          Namun, kecemasan yang berlebihan ini tidak selalu terkait dengan
+          situasi yang sebenarnya mengancam.
         </p>
       </div>
-
-      {/* About Anxiety Disorder */}
+      <div className="flex justify-center mt-6" data-aos="fade-up">
+        <button
+          onClick={() => navigate("/calculator")}
+          className="bg-primary hover:bg-primary/80 text-white py-3 px-6 rounded-lg text-lg">
+          Screening Anxiety Disorder
+        </button>
+      </div>
+      <div className="space-y-4" data-aos="fade-up">
+        <h2 className="text-2xl font-bold text-gray-800">
+          Apakah anda merasa cemas berlebihan ?
+        </h2>
+        <p className="text-gray-700">
+          Jika kecemasan yang Anda rasakan sudah mulai mengganggu aktivitas
+          sehari-hari, kualitas tidur, atau hubungan sosial Anda, penting untuk
+          segera mengetahui lebih jauh tentang kondisi ini
+        </p>
+      </div>
       <div className="space-y-4" data-aos="fade-up">
         <h2 className="text-2xl font-bold text-gray-800">
           Apa itu Anxiety Disorder?
@@ -66,30 +86,6 @@ function Home() {
           hingga merasa ketakutan atau tidak mampu bergerak.
         </p>
       </div>
-      <div className="space-y-4" data-aos="fade-up">
-        <h2 className="text-2xl font-bold text-gray-800">
-          Kenapa Penting untuk Mengenali Anxiety Disorder?
-        </h2>
-        <p className="text-gray-700">
-          Jika kecemasan tidak diatasi, dapat mempengaruhi kehidupan pribadi dan
-          pekerjaan, bahkan menyebabkan gangguan fisik seperti masalah
-          pencernaan dan hipertensi. Dengan melakukan screening kecemasan adalah
-          langkah pertama untuk mengetahui lebih dalam tentang kondisi kesehatan
-          mental Anda, dengan menggunakan Self-Rating Anxiety Scale (SAS/SRAS)
-          yang telah terbukti valid, Anda bisa mengetahui apakah Anda mengalami
-          kecemasan yang perlu perhatian khusus dan mengetahui langkah-langkah
-          yang perlu diambil untuk penanganan lebih lanjut.
-        </p>
-      </div>
-
-      {/* Screening Button */}
-      <div className="flex justify-center mt-6" data-aos="fade-up">
-        <button
-          onClick={() => navigate("/calculator")}
-          className="bg-primary hover:bg-primary/80 text-white py-3 px-6 rounded-lg text-lg">
-          Screening Anxiety Disorder
-        </button>
-      </div>
 
       {/* Jenis-jenis Anxiety Disorder (Slide) */}
       <div className="space-y-2" data-aos="fade-up">
@@ -97,7 +93,16 @@ function Home() {
           Jenis-jenis Anxiety Disorder
         </h2>
 
-        <Swiper slidesPerView={1} spaceBetween={20} className="w-full">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={20}
+          autoplay={{
+            delay: 2500, // Waktu interval antara slide (dalam milidetik)
+            disableOnInteraction: false, // Slide akan terus berjalan meskipun pengguna berinteraksi
+          }}
+          loop={true}
+          modules={[Autoplay]}
+          className="w-full">
           <SwiperSlide>
             <div className="p-4 bg-white rounded-lg shadow flex flex-wrap gap-5 md:items-start items-center justify-center md:justify-start">
               <img
@@ -169,11 +174,11 @@ function Home() {
           </SwiperSlide>
         </Swiper>
         {/* Add "Swipe" Indicator */}
-        <div className="text-start text-gray-500 ">
+        {/* <div className="text-start text-gray-500 ">
           <span className="italic text-sm">
             *Geser untuk melihat lebih banyak
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Gejala Anxiety Disorder */}
@@ -257,8 +262,38 @@ function Home() {
             </ul>
           </div>
         </div>
+        <div className="space-y-4" data-aos="fade-up">
+          <h2 className="text-2xl font-bold text-gray-800">
+            Kenapa Penting untuk Mengenali Anxiety Disorder?
+          </h2>
+          <p className="text-gray-700">
+            Jika kecemasan tidak diatasi, dapat mempengaruhi kehidupan pribadi
+            dan pekerjaan, bahkan menyebabkan gangguan fisik seperti masalah
+            pencernaan dan hipertensi. Dengan melakukan screening kecemasan
+            adalah langkah pertama untuk mengetahui lebih dalam tentang kondisi
+            kesehatan mental Anda, dengan menggunakan Self-Rating Anxiety Scale
+            (SAS/SRAS) yang telah terbukti valid, Anda bisa mengetahui apakah
+            Anda mengalami kecemasan yang perlu perhatian khusus dan mengetahui
+            langkah-langkah yang perlu diambil untuk penanganan lebih lanjut.
+          </p>
+        </div>
       </div>
-
+      <div className="space-y-4" data-aos="fade-up">
+        <h2 className="text-2xl font-bold text-gray-800">
+          Mulai screening sekarang !
+        </h2>
+        <p className="text-gray-700">
+          Cukup luangkan waktu 5 menit untuk menjawab pertanyaan dan ketahui
+          tingkat kecemasan Anda.
+        </p>
+      </div>
+      <div className="flex justify-center mt-6" data-aos="fade-up">
+        <button
+          onClick={() => navigate("/calculator")}
+          className="bg-primary hover:bg-primary/80 text-white py-3 px-6 rounded-lg text-lg">
+          Screening Anxiety Disorder
+        </button>
+      </div>
       {/* Motivational Section */}
       <div
         className="p-6 bg-blue-100 rounded-lg shadow text-center"
@@ -269,11 +304,6 @@ function Home() {
           Anda merasa cemas berlebihan atau mengalami gangguan tidur, jangan
           ragu untuk mencari bantuan. Kami di sini untuk mendukung Anda.
         </p>
-        <button
-          onClick={() => navigate("/calculator")}
-          className="mt-4 bg-primary hover:bg-primary/80 text-white py-3 px-6 rounded-lg">
-          Mulai Screening Sekarang!
-        </button>
       </div>
     </div>
   );
