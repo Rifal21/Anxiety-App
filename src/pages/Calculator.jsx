@@ -30,7 +30,7 @@ function Calculator() {
   const [biodata, setBiodata] = useState({ name: "", age: "", gender: "" });
   const [responses, setResponses] = useState(Array(questions.length).fill(0));
   const [step, setStep] = useState(1);
-  const [visibleQuestions, setVisibleQuestions] = useState(6); // Tampilkan 6 pertanyaan awal
+  // const [visibleQuestions, setVisibleQuestions] = useState(6);
   const navigate = useNavigate();
 
   const handleResponse = (index, value) => {
@@ -132,20 +132,20 @@ function Calculator() {
   const isBiodataComplete = biodata.name && biodata.age && biodata.gender;
 
   // Tambahkan lebih banyak pertanyaan saat scroll ke bawah
-  const handleScroll = () => {
-    const bottom =
-      Math.ceil(window.innerHeight + document.documentElement.scrollTop) ===
-      document.documentElement.offsetHeight;
-    if (bottom && visibleQuestions < questions.length) {
-      setVisibleQuestions(visibleQuestions + 6); // Tambah 6 pertanyaan setiap kali scroll sampai selesai
-    }
-  };
+  // const handleScroll = () => {
+  //   const bottom =
+  //     Math.ceil(window.innerHeight + document.documentElement.scrollTop) ===
+  //     document.documentElement.offsetHeight;
+  //   if (bottom && visibleQuestions < questions.length) {
+  //     setVisibleQuestions(visibleQuestions + 6); // Tambah 6 pertanyaan setiap kali scroll sampai selesai
+  //   }
+  // };
 
   useEffect(() => {
     AOS.init(); // Inisialisasi AOS
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [visibleQuestions]);
+    // window.addEventListener("scroll", handleScroll);
+    // return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Cek apakah semua pertanyaan sudah terisi
   const isAllQuestionsAnswered = responses.every((response) => response !== 0);
@@ -244,7 +244,7 @@ function Calculator() {
             className="text-gray-700 mb-6 text-center">
             Jawab setiap pertanyaan dengan memilih salah satu opsi di bawah ini.
           </p>
-          {questions.slice(0, visibleQuestions).map((question, index) => (
+          {questions.map((question, index) => (
             <div
               key={index}
               data-aos="fade-up"

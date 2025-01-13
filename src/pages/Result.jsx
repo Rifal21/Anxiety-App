@@ -268,6 +268,66 @@ function Result() {
                   </li>
                 ))}
               </ul>
+              {score >= 60 && score <= 74 ? (
+                <div className="bg-yellow-100 border border-yellow-300 text-yellow-700 p-4 rounded-lg mt-4">
+                  <p className="text-sm mb-3">
+                    <strong>Perhatian:</strong> Tingkat kecemasan yang tinggi
+                    dapat menyebabkan masalah kesehatan mental, seperti depresi,
+                    gangguan psikologi, dan gangguan pikiran. Sebaiknya segera
+                    berkonsultasi dengan dokter untuk mendapatkan penanganan
+                    yang tepat. Jika kecemasan yang Anda rasakan sudah mencapai
+                    tingkat yang berat dan sulit untuk diatasi sendiri, kami
+                    sangat menyarankan Anda untuk segera mencari bantuan
+                    profesional.
+                  </p>
+                  <p className="text-sm">
+                    Silakan mengunjungi atau menghubungi kontak di bawah ini
+                    untuk mendapatkan dukungan yang Anda butuhkan. <br /> <br />
+                    <strong className="text-sm">
+                      Layanan Konsultasi:
+                    </strong>{" "}
+                    <a
+                      href="https://wa.me/6281373438534"
+                      className="text-blue-600 hover:underline text-lg ">
+                      [081373438534 / Biro psikologi]
+                    </a>{" "}
+                    <br />
+                    <br />
+                    <span className="text-base">
+                      Jangan ragu untuk mencari pertolongan, Anda
+                      tidak sendirian!!
+                    </span>
+                  </p>
+                </div>
+              ) : score >= 75 && score <= 80 ? (
+                <div className="bg-red-100 border border-red-300 text-red-700 p-4 rounded-lg mt-4">
+                  <p className="text-sm mb-3">
+                    <strong>Perhatian:</strong> Tingkat kecemasan yang sangat
+                    tinggi dapat menyebabkan masalah kesehatan mental, seperti
+                    depresi, gangguan psikologi, dan gangguan pikiran. Sebaiknya
+                    segera berkonsultasi dengan dokter untuk mendapatkan
+                    penanganan yang tepat.
+                  </p>
+                  <p className="text-sm">
+                    Silakan mengunjungi atau menghubungi kontak di bawah ini
+                    untuk mendapatkan dukungan yang Anda butuhkan. <br /> <br />
+                    <strong className="text-sm">
+                      Layanan Konsultasi:
+                    </strong>{" "}
+                    <a
+                      href="https://wa.me/6281373438534"
+                      className="text-blue-600 hover:underline text-lg ">
+                      [081373438534 / Biro psikologi]
+                    </a>{" "}
+                    <br />
+                    <br />
+                    <span className="text-base">
+                      Jangan ragu untuk mencari pertolongan, Anda
+                      tidak sendirian!!
+                    </span>
+                  </p>
+                </div>
+              ) : null}
             </div>
             <button
               onClick={() => navigate("/")}

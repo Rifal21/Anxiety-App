@@ -13,8 +13,8 @@ function Navbar() {
             className="h-8 w-8 md:h-10 md:w-10"
           />
           <div className="flex flex-col">
-            <h1 className="">Sekolah Tinggi Ilmu Kesehatan (STIKES)</h1>
-            <span className="uppercase">Payung Negeri PEKANBARU</span>
+            <h1 className="">Institut Kesehatan Payung Negeri (IKESPN)</h1>
+            <span className="">Pekanbaru</span>
           </div>
         </div>
 
