@@ -287,9 +287,11 @@ function Result() {
                       Layanan Konsultasi:
                     </strong>{" "}
                     <a
-                      href="https://wa.me/6281373438534"
-                      className="text-blue-600 hover:underline text-lg ">
-                      [081373438534 / Biro psikologi]
+                      href="https://wa.me/6285279833443"
+                      className="text-blue-600 hover:underline text-lg "
+                      target="_blank">
+                      0852-7983-3443 / Konsultan <br /> Alamat nya: JI. Gotong
+                      Royong, Gg. Perwira IV. Labuh Baru Timur.
                     </a>{" "}
                     <br />
                     <br />
@@ -315,9 +317,11 @@ function Result() {
                       Layanan Konsultasi:
                     </strong>{" "}
                     <a
-                      href="https://wa.me/6281373438534"
-                      className="text-blue-600 hover:underline text-lg ">
-                      [081373438534 / Biro psikologi]
+                      href="https://wa.me/6285279833443"
+                      className="text-blue-600 hover:underline text-lg "
+                      target="_blank">
+                      0852-7983-3443 / Konsultan <br /> Alamat: JI. Gotong
+                      Royong, Gg. Perwira IV. Labuh Baru Timur.
                     </a>{" "}
                     <br />
                     <br />
