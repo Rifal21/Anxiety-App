@@ -168,7 +168,7 @@ function Result() {
     );
     doc.setFontSize(14);
     doc.text(
-      "Sekolah Tinggi Ilmu Kesehatan (STIKES) Payung Negeri",
+      "Institut Kesehatan Payung Negeri (IKESPN) Pekanbaru",
       105,
       30,
       null,
